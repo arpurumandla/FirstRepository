@@ -1,1 +1,187 @@
 
+<html>
+
+    <head>
+        <script type="text/javascript" src="script.js"></script>
+		<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <style>
+    body
+    {
+    background-color: #99FFCC;  
+    }
+    
+    .Form 
+    {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    }
+    
+    .TextBox
+    {
+        width: 200px;
+        height: 25px;
+    }
+    
+    ::-webkit-input-placeholder { color: #acacac; }
+input {
+    margin:0px 1px;
+    padding:0px;
+    border:none;
+    height:36px;
+    width:137px;
+    vertical-align:bottom;
+    font-size:16px;
+}
+input[type=submit]{
+    background:#30aa13;
+    color:#fff;
+    width: 70px;
+    padding:0px 7px;
+    border-radius: 5px;
+}
+input[type=reset]{
+    background:#30aa13;
+    color:#fff;
+    width: 70px;
+    padding:0px 7px;
+    border-radius: 5px;
+}
+
+    
+    
+    
+    </style>
+    </head>
+
+    <body >
+    <div class="Form" ng-app="">
+    <table>
+    <tr>
+        <td colspan="2" style="text-align:center">
+        Registration Form
+        </td>
+    </tr>
+    
+    <tr >
+        <td style="padding:10px;">
+            User Name
+        </td>
+        <td >
+            <input type="text" class="TextBox" id="txtuname" ng-model="name"/> 
+			The Username is: {{name}}
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            Password
+        </td>
+        <td style="padding:10px;">
+            <input type="password" id="txtpwd" class="TextBox"/>
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            E-Mail
+        </td>
+        <td style="padding:10px;">
+            <input type="text" id="txtemail" ng-model="email" class="TextBox"/>
+			The email is: {{email}}
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            Phone
+        </td>
+        <td style="padding:10px;">
+            <input type="text" id="txtphone" ng-model="phonenum" class="TextBox"/>
+			The phone number is: {{phonenum}}
+        </td>
+    </tr>
+    
+    <tr>
+        <td>&nbsp;
+        </td>
+        <td>
+            <input type="submit" value="Submit" id="submit"
+            onclick="ValidateUser()"/>
+            <input type="reset" value="Reset" id="submit"
+            onclick="reset()"/>
+        </td>
+    </tr>
+    
+    </table>
+    
+    <script type="text/javascript">
+    function ValidateUser() 
+		{
+		  var name= document.getElementById('txtuname').value;
+		  var pwd= document.getElementById('txtpwd').value;
+		  var mail= document.getElementById('txtemail').value;
+		  var phone= document.getElementById('txtphone').value;   
+	      var email = document.getElementById('txtemail').value;
+     
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if(name=="")
+    {
+        alert("User Name Should Not Be Empty");
+        return false;
+    }
+    
+    if(pwd=="")
+    {
+        alert("Password Should Not Be Empty");
+        return false;
+    }
+    
+    if(pwd.length<8)
+    {
+        alert("Password must be 8 characters");
+        return false;
+    }
+    
+    var isValidEmail = re.test(email);
+    if (isValidEmail) 
+    {
+    } 
+    else
+    { 
+    alert("Not a valid e-mail address");
+    return false;
+    }
+    
+    if(phone=="")
+    {
+        alert("Phone Number Should Not Be Empty");
+        return false;
+    }
+    
+    if(phone.length<=9)
+    {
+        alert("Not a Valid Phone Number");
+        return false;
+    }
+    
+    alert("Registration Completed succesfully")
+    	
+	};
+	
+	function reset() 
+		{
+		  document.getElementById('txtuname').value="";
+		  document.getElementById('txtpwd').value="";
+		  document.getElementById('txtemail').value="";
+		  document.getElementById('txtphone').value="";   
+	      document.getElementById('txtemail').value="";
+		}
+    </script>
+    
+    </div>
+    </body>
+
+</html>
